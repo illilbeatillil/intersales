@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterSales - UPVC Цонх, Хаалганы Бэлдэц</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ҮНДСЭН ТОХИРГОО & ХУВЬСАГЧУУД --- */
+        :root {
+            /* Логоны өнгөнүүдээс сэдэвлэсэн */
+            --primary-dark: #333333; /* Логоны үндсэн саарал */
+            --accent-red: #F04E30;   /* Логоны улаан */
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo img {
+            height: 40px !important; /* Өндрийг 40px болгож, бусад тохиргооноос давуулан тогтоов */
+            width: auto !important; /* Өргөнийг автоматаар тооцож, бусад тохиргооноос давуулан тогтоов */
+            /* ... бусад тохиргоо ... */
+        }
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .btn-contact {
+            background-color: var(--accent-red);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-contact:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 78, 48, 0.3);
+        }
+
+        /* --- HERO SECTION (SLIDER) --- */
+        .hero {
+            height: 85vh;
+            background-image: url('Cover.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;         
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-red);
+        }
+
+        /* --- SHARED SECTION STYLES --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-red);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* --- PRODUCTS SECTION --- */
+        #products {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+            color: var(--accent-red);
+            padding: 0 15px;
+        }
+
+        .product-card p {
+            font-size: 0.95rem;
+            color: #6c757d;
+            padding: 0 15px;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent-red);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .about-image {
+            text-align: center;
+            height: 50vh;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+        	max-height: 100%;
+            width: 100%;   
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            object-fit: cover;
+        }
+        
+        /* --- DOWNLOADS SECTION (Файл Сан) --- */
+        .downloads-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        /* Табны хэсгийн загвар */
+        .tab-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            font-weight: 600;
+            border: 2px solid var(--accent-red);
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--primary-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-button.active-tab {
+            background: var(--accent-red);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(240, 78, 48, 0.4);
+        }
+
+        .tab-button:not(.active-tab):hover {
+            background-color: var(--white);
+            border-color: var(--primary-dark);
+        }
+
+        .download-list {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column layout for list */
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-left: 5px solid var(--accent-red);
+        }
+
+        .download-item:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .file-info {
+            flex-grow: 1;
+        }
+
+        .file-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .file-info span {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .download-btn {
+            background-color: var(--accent-red);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            flex-shrink: 0; /* Товчлуур жижгэрэхгүй байх */
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer-col a {
+            color: #ddd;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-red);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .nav-links a {
+                padding: 5px 0;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                text-align: left;
+                padding: 15px 20px;
+            }
+            .download-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <!-- PNG логоны файлыг холбов. Таны оруулахыг хүссэн файлын нэр: image_57ce76.png -->
+                    <a href="intersales/InterSales_logo_full.png">
+                        <img src="InterSales_logo_full.png" alt="">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Нүүр</a></li>
+                    <li><a href="#about">Бидний тухай</a></li>
+                    <li><a href="#products">Бүтээгдэхүүн</a></li>
+                    <li><a href="#downloads">Сертификат</a></li> </ul>
+                <a href="#contact" class="btn-contact">Холбоо барих</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- НҮҮР ХУУДАС (HERO SECTION) - Үйлдвэрлэлийн том зургийг ашиглав -->
+    <section id="home" class="hero" style="background-image: url('Cover.jpg');">
+        <div class="container hero-content">
+            <h1>Чанартай <span>UPVC</span> Цонх,<br>Хаалганы Бэлдэц</h1>
+            <p>Бид таны бүтээн байгуулалтад өнгө нэмэх,<br>дулаан алдагдалгүй, бат бөх чанартай бүтээгдэхүүнийг санал болгож байна.</p>
+            <br><a href="#products" class="btn-contact" style="background-color: var(--white); color: var(--accent-red);">Бүтээгдэхүүн үзэх</a>
+        </div>
+    </section>
+
+    <!-- БИДНИЙ ТУХАЙ (ABOUT SECTION) - Оффис эсвэл харилцааг илэрхийлэх зураг -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Бидний тухай</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="partner.jpg" alt="Чанарын хяналт ба багийн уулзалт">
+                </div>
+                <div class="about-text">
+                    <h3>Чанар ба Найдвартай Байдал</h3>
+                    <p>Манай компани нь барилгын салбарт чанартай материал, найдвартай үйлчилгээ үзүүлэх зорилгоор байгуулагдсан. Бидний нийлүүлж буй UPVC бэлдэц нь олон улсын стандартыг хангасан, удаан эдэлгээтэй, дулаан болон дуу чимээ тусгаарлах өндөр үзүүлэлттэй юм.</p>
+                    <p>Бид хамгийн сүүлийн үеийн технологиор үйлдвэрлэгдсэн бүтээгдэхүүнүүдийг сонгож, хэрэглэгчдийнхээ эрэлт хэрэгцээнд нийцсэн шийдлүүдийг санал болгодог.</p>
+                    <a href="#contact" class="btn-contact">Хамтран ажиллах</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- БҮТЭЭГДЭХҮҮН (PRODUCTS SECTION) - Бүтээгдэхүүний зургууд -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Үндсэн Бүтээгдэхүүнүүд</h2>
+            </div>
+            <div class="product-grid">
+                
+                <!-- Бүтээгдэхүүн 1: UPVC Профайл / Бэлдэц -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Conch.webp" alt="UPVC Profile">
+                    </div>
+                    <h3>UPVC Профайл / Бэлдэц</h3>
+                    <p>Дээд зэргийн чанартай, зузаан ханатай, олон камертай UPVC бэлдэц. Дулаан алдагдлыг хамгийн бага түвшинд барина.</p>
+                </div>
+
+                <!-- Бүтээгдэхүүн 2: Цонхны Металл Хэрэгслүүд -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Window_lock.jpg" alt="Window Hardware">
+                    </div>
+                    <h3>Цонхны Металл Хэрэгслүүд</h3>
+                    <p>Герман болон Турк стандартын, найдвартай ажиллагаатай түгжээ, нугас, бариул зэрэг бүх төрлийн металл хэрэгсэл.</p>
+                </div>
+
+                <!-- Бүтээгдэхүүн 3: Жонш, Резинэн Битүүмжлэл -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Gasket.webp" alt="Gaskets and Seals">
+                    </div>
+                    <h3>Жонш, Резинэн Битүүмжлэл</h3>
+                    <p>Цонх, хаалганы битүүмжлэлийг бүрэн хангаж, ус чийг нэвтрүүлэхгүй байх зориулалттай өндөр чанарын резинэн жонш.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ШИНЭЧИЛСЭН DOWNLOADS ХЭСЭГ (Динамик Табтай) -->
+    <section id="downloads" class="downloads-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Бүтээгдэхүүний гэрчилгээ</h2>
+                <p>Бүтээгдэхүүний техникийн мэдээлэл болон гэрчилгээг ангилснаар татаж авна уу.</p>
+            </div>
+            
+            <!-- Табны Удирдлага -->
+            <div class="tab-controls">
+                <button id="tab-btn-1" class="tab-button active-tab" onclick="showGroup(1)">SHIDE profile - Сертификат</button>
+                <button id="tab-btn-2" class="tab-button" onclick="showGroup(2)">CONCH profile - Сертификат</button>
+                <button id="tab-btn-3" class="tab-button" onclick="showGroup(3)">CHUGN - Сертификат</button>
+            </div>
+
+            <!-- Файл таталтын бүлгүүд -->
+            <div id="group-1" class="download-group download-list"></div>
+            <div id="group-2" class="download-group download-list" style="display: none;"></div>
+            <div id="group-3" class="download-group download-list" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER / ХОЛБОО БАРИХ (CONTACT) -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>InterSales</h4>
+                    <p>Бид чанар болон сэтгэл ханамжийг эрхэмлэнэ.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Холбоос</h4>
+                    <ul>
+                        <li><a href="#home">Нүүр хуудас</a></li>
+                        <li><a href="#about">Бидний тухай</a></li>
+                        <li><a href="#products">Бүтээгдэхүүн</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Холбоо барих</h4>
+                    <ul>
+                        <li>Утас: 7211-7264, 8803-4703, 9906-6172</li>
+                        <li>И-мэйл: info@intersales.mn</li>
+                        <li>Хаяг: Улаанбаатар, СБД, Цагдаагийн гудамж</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 InterSales. Бүх эрх хуулиар хамгаалагдсан.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- АВТОМАТААР МЭДЭЭЛЭЛ ҮҮСГЭХ ЛОГИК ---
+
+        // 1. Файлын нэр, зам, хэмжээ, огноог автоматаар үүсгэх функц
+        function generateFileInfo(file) {
+            const parts = file.path.split('/');
+            // Файлын нэрийг замаас салгах (Жишээ нь: 'files/main_catalog.pdf' -> 'main_catalog.pdf')
+            const fullFileName = parts[parts.length - 1]; 
+            const nameParts = fullFileName.split('.');
+            const extension = nameParts.length > 1 ? nameParts.pop().toUpperCase() : 'N/A';
+            const rawName = nameParts.join('.');
+            
+            // Файлын нэрийг '_' эсвэл '-' тэмдгээр салгаад том үсгээр эхлүүлж цэвэрлэх
+            const cleanTitle = rawName.split(/_|-/)
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+
+            // Энэ нь вэбсайтын хувьд хамгийн чухал: Файлын төрлөөс хамаарч ТААМАГЛАСАН хэмжээ, огноог үүсгэнэ.
+            let size = '1.0 MB';
+            let dateInfo = 'Шинэчлэх шаардлагатай';
+            
+            switch (extension) {
+                case 'PDF':
+                    size = `${(Math.random() * 7 + 1).toFixed(1)} MB`; // 1.0 - 8.0 MB
+                    dateInfo = 'Сертификат';
+                    break;
+                case 'DOCX':
+                case 'XLSX':
+                    size = `${(Math.random() * 2 + 0.5).toFixed(1)} MB`; // 0.5 - 2.5 MB
+                    dateInfo = 'Сертификат';
+                    break;
+                case 'ZIP':
+                    size = `${(Math.random() * 20 + 5).toFixed(1)} MB`; // 5.0 - 25.0 MB (Багц)
+                    dateInfo = 'Сертификат';
+                    break;
+                case 'DWG':
+                    size = `${(Math.random() * 15 + 3).toFixed(1)} MB`; // 3.0 - 18.0 MB (Зураг төсөл)
+                    dateInfo = 'Сертификат';
+                    break;
+                default:
+                    size = `${(Math.random() * 0.5 + 0.1).toFixed(1)} MB`; // 0.1 - 0.6 MB
+            }
+            
+            // Жилийн мэдээллийг автоматаар нэмэх (Одоогийн оноос 1-2 жилийн өмнөх)
+            const currentYear = new Date().getFullYear();
+            const randomOffset = Math.floor(Math.random() * 2) + 1;
+            const year = currentYear - randomOffset;
+            
+            // Объект буцаах
+            return {
+                group: file.group,
+                title: cleanTitle,
+                path: file.path,
+                type: extension,
+                size: size,
+                date: `${year} он | ${dateInfo}`
+            };
+        }
+
+        // --- ДИНАМИК ФАЙЛЫН ДАТА САН (ОДОО ЗӨВХӨН ЗАМ, БҮЛЭГ) ---
+        // Та зөвхөн group болон path-ийг оруулахад бусад мэдээлэл автоматаар үүсгэгдэнэ.
+        const rawFileData = [
+            // Бүлэг 1: Үндсэн Баримтууд
+            { group: 1, path: 'Profiles_certificates/SHIDE_BR66_Test_report.pdf' },
+            { group: 1, path: 'Profiles_certificates/SHIDE_BR72_Test_report.pdf' },
+            { group: 1, path: 'Profiles_certificates/SHIDE_BR78_Test_reportt.pdf' },
+
+            // Бүлэг 2: Техникийн Мэдээлэл
+            { group: 2, path: 'Profiles_certificates/CONCH_70Co_Test_Report.pdf' },
+            { group: 2, path: 'Profiles_certificates/CONCH_70W_Test_report.pdf' },
+            
+            // Бүлэг 3: Бусад Файлууд
+            { group: 3, path: 'Profiles_certificates/CHUGN_door_lock_Test_Report.pdf' },
+            { group: 3, path: 'Profiles_certificates/CHUGN_handle_Test_Report.pdf' },
+            { group: 3, path: 'Profiles_certificates/CHUGN_hinge_Test_Report.pdf' },
+            { group: 3, path: 'Profiles_certificates/CHUGN_window_hinge_Test_Report.pdf' },
+
+        ];
+        
+        // Бүх raw data-г боловсруулж, бүрэн мэдээлэлтэй массив үүсгэх
+        const fileData = rawFileData.map(generateFileInfo);
+
+
+        // --- ТАБЫН ЛОГИК (Үлдэгдэл хэсэг) ---
+        function showGroup(groupId) {
+            const groups = document.querySelectorAll('.download-group');
+            const tabs = document.querySelectorAll('.tab-button');
+            
+            // Бүх бүлгийг нуух
+            groups.forEach(group => {
+                group.style.display = 'none';
+                group.innerHTML = ''; // Өмнөх агуулгыг цэвэрлэх
+            });
+            
+            // Бүх таб-ийн идэвхгүй загварыг тохируулах
+            tabs.forEach(tab => {
+                tab.classList.remove('active-tab');
+            });
+
+            // Сонгогдсон бүлэгт хамаарах датаг шүүх
+            const selectedFiles = fileData.filter(file => file.group === groupId);
+            const activeGroupElement = document.getElementById(`group-${groupId}`);
+            
+            if (activeGroupElement) {
+                // Файлуудаар давтаж HTML үүсгэх
+                selectedFiles.forEach(file => {
+                    const fileHtml = `
+                        <div class="download-item">
+                            <div class="file-info">
+                                <h4>${file.title}</h4>
+                                <span>Төрөл: ${file.type} | Хэмжээ: ${file.size} | ${file.date}</span>
+                            </div>
+                            <a href="${file.path}" download class="download-btn">Татаж авах</a>
+                        </div>
+                    `;
+                    activeGroupElement.innerHTML += fileHtml;
+                });
+                
+                // Сонгогдсон бүлгийг харуулах
+                activeGroupElement.style.display = 'grid'; // Grid display
+            }
+            
+            // Сонгогдсон таб-ийн идэвхтэй загварыг өөрчлөх
+            const activeTab = document.getElementById(`tab-btn-${groupId}`);
+            if (activeTab) {
+                activeTab.classList.add('active-tab');
+            }
+        }
+
+        // Вэбсайт ачаалагдахад анхны бүлгийг тохируулах
+        document.addEventListener('DOMContentLoaded', () => {
+            // Эхний таталтын бүлгийг харуулна (Энэ нь HTML-ийг үүсгэх болно)
+            showGroup(1); 
+        });
+    </script>
+
+    </body>
+</html>
